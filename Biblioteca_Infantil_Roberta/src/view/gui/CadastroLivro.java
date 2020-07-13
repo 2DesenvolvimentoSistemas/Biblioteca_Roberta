@@ -5,6 +5,7 @@
  */
 package view.gui;
 
+import controler.ProdutoDao;
 import javax.swing.JOptionPane;
 import model.design.Livro;
 import view.modelo.ModeloTabelaLivro;
@@ -17,6 +18,9 @@ public class CadastroLivro extends javax.swing.JFrame {
     
     //modelo de tabela
     ModeloTabelaLivro modelo = new ModeloTabelaLivro();
+    
+    //criacao do objeto Dao
+    ProdutoDao pDao = new ProdutoDao();
 
     /**
      * Creates new form CadastroLivro
@@ -200,18 +204,24 @@ public class CadastroLivro extends javax.swing.JFrame {
                     .addComponent(btnAtualizar)
                     .addComponent(btnexcluir)
                     .addComponent(btnLimpar))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -265,11 +275,23 @@ public class CadastroLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         try{
+            //depois esse comando deve ser substituido pelo método read
         this.modelo.addRow(new Livro( 
         txtNome.getText(),
            txtAcabamento.getText(),
                 Integer.parseInt(txtCodigo.getText()),
                 Double.parseDouble(txtPreco.getText()))
+        );
+        
+        //gravando na tabela do BD 
+        pDao.create(
+        new Livro(
+                txtNome.getText(), 
+                txtAcabamento.getText(),
+                Integer.parseInt(txtCodigo.getText()),
+                Double.parseDouble(txtPreco.getText())
+        )
+                
         );
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog( 
