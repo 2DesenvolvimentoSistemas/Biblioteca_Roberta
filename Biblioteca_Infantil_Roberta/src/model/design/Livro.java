@@ -32,7 +32,7 @@ public class Livro {
     
     //atributos
     private String nomeLivro;
-    private String acabamento;
+    private String acabamento; //brochura, aspiral ou coisa que o valha
     private int codLivro;
     private double preco;
     
