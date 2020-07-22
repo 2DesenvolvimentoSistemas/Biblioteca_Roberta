@@ -37,7 +37,7 @@ public class LivroDao { //Renomeei a classe...
             //atribuicao de valor aos parametros
             stmt.setString(1, l.getNomeLivro());
             stmt.setString(2, l.getAcabamento());
-            stmt.setDouble(3, l.getCodLivro());
+            stmt.setInt(3, l.getCodLivro());
             stmt.setDouble(4, l.getPreco());
         
             //execusao do codigo
@@ -85,6 +85,32 @@ public class LivroDao { //Renomeei a classe...
       return null;
     }
     
+    //update do crud
+    public void update (Livro l){
+        try{
+        //estabelecendo conexao
+        con = Conexao.getConnection();
+        
+        //cod sql para update
+        stmt = con.prepareStatement("UPDATE NomeLivro" +
+                                    "SET Acabamento = ?," +
+                                    "CodLivro = ?" +
+                                    "WHERE Preco = ?");
+        
+        //definicao dos parametros
+        stmt.setString(1, l.getNomeLivro());
+        stmt.setString(2, l.getAcabamento());
+        stmt.setInt(3, l.getCodLivro());
+        stmt.setDouble(4, l.getPreco());
+        
+        //atualizando os dados na tabela
+        stmt.executeUpdate();
+        
+    }catch (SQLException e){
+        JOptionPane.showMessageDialog(null, "Erro!" + e.getMessage());
+    }finally {
+    Conexao.closeConnection(con, stmt);
+    }
     
-    
+    }
 }
