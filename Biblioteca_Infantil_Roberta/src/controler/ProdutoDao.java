@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.design.Livro;
 
@@ -45,6 +47,43 @@ public class ProdutoDao {
         }finally{
             Conexao.closeConnection(con, stmt);
         }
+    } //fim do create
+    
+    //read
+    public List <Produto> read (){
+    //lista de produtos
+    List <Produto> livros = new ArrayList<>();
+    
+    try{
+        //estabelecendo conexão
+        con = Conexao.getConnection();
+        
+        //codigo sql
+        smt = con.prepareStatement("SELECT NomeLivro, Acabamento, CodLivro, Preco" "FROM PRODUTO");
+        
+        //executando a consulta
+        rs = stmt.executeQuery();
+        
+        while (rs.next()){
+            livros.add(
+                new Livro(
+                        rs.getString("NomeLivro"),
+                        rs.getString("Acabamento"),
+                        rs.getInt("CodLivro"),
+                        rs.getDouble("Preco")
+                )
+            );
+        }
+        return livros;
+        
+    }catch (SQLException e){
+    JOptionPane.showMessageDialog(null,"Erro!" + e.getMessage());
+    }finally{
+    Conexao.closeConnection(con, stmt, rs);
     }
+      return null;
+    }
+    
+    
     
 }
