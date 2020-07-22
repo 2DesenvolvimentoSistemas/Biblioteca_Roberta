@@ -228,6 +228,13 @@ public class CadastroLivro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void lerTabela (){
+        //add livros na tabela
+        for (Livro l: pDao.read())
+            this.modelo.addRow(l);
+            this.lerTabela();
+    }
     private void txtAcabamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcabamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcabamentoActionPerformed
@@ -275,13 +282,15 @@ public class CadastroLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         try{
+            /*
             //depois esse comando deve ser substituido pelo método read
         this.modelo.addRow(new Livro( 
         txtNome.getText(),
            txtAcabamento.getText(),
                 Integer.parseInt(txtCodigo.getText()),
                 Double.parseDouble(txtPreco.getText()))
-        );
+        );*/
+            
         
         //gravando na tabela do BD 
         pDao.create(
@@ -302,6 +311,12 @@ public class CadastroLivro extends javax.swing.JFrame {
             );
             
         }
+        
+        //limpando a tela
+        this.btnLimparActionPerformed(evt);
+        
+        //atualizando a tabela da interface
+        this.lerTabela();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
