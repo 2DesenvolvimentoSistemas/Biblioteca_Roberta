@@ -21,7 +21,8 @@ public class ModeloTabelaLivro extends AbstractTableModel {
     
     //vetor de rotulos de campo
     private String[] colunas = {"Nome do livro","Acabamento","Código do livro","Preço"};
-
+    
+    //remendo para evitar dados repetidos na tabela da interface
     //Você esqueceu este método aqui...
     public void clearTable(){
         livro.clear();
