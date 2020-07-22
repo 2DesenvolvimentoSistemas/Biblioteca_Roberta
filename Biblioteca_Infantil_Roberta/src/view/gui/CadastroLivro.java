@@ -265,12 +265,6 @@ public class CadastroLivro extends javax.swing.JFrame {
             }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null,"Erro!" + e.getMessage());
             }
-            /*obsoleto
-            modelo.setValueAt(txtNome.getText(), linha, 0);
-            modelo.setValueAt(txtAcabamento.getText(), linha, 1);
-            modelo.setValueAt(txtCodigo.getText(), linha, 2);
-            modelo.setValueAt(txtPreco.getText(), linha, 3);
-            */
         }
         
         //limpando o form

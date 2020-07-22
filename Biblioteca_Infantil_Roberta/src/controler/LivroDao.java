@@ -92,22 +92,23 @@ public class LivroDao { //Renomeei a classe...
         con = Conexao.getConnection();
         
         //cod sql para update
-        stmt = con.prepareStatement("UPDATE NomeLivro" +
-                                    "SET Acabamento = ?," +
-                                    "CodLivro = ?" +
-                                    "WHERE Preco = ?");
+        stmt = con.prepareStatement("UPDATE livro " +
+                                    "SET Acabamento = ?, " +
+                                    "NomeLivro = ?, " +
+                                    "Preco = ? " +
+                                    "WHERE CodLivro = ?");
         
         //definicao dos parametros
-        stmt.setString(1, l.getNomeLivro());
-        stmt.setString(2, l.getAcabamento());
-        stmt.setInt(3, l.getCodLivro());
-        stmt.setDouble(4, l.getPreco());
+        stmt.setString(1, l.getAcabamento());
+        stmt.setString(2, l.getNomeLivro());
+        stmt.setDouble(3, l.getPreco());
+        stmt.setInt(4, l.getCodLivro());
         
         //atualizando os dados na tabela
         stmt.executeUpdate();
         
     }catch (SQLException e){
-        JOptionPane.showMessageDialog(null, "Erro!" + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
     }finally {
     Conexao.closeConnection(con, stmt);
     }

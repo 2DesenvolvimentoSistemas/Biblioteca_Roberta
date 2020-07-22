@@ -29,7 +29,7 @@ public class Conexao {
         Class.forName(DRIVER);
         return DriverManager.getConnection(URL, USR, PSW);
        } catch (ClassNotFoundException | SQLException e){
-        JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Erro banana " + e.getMessage());
         return null;
        }
     }
