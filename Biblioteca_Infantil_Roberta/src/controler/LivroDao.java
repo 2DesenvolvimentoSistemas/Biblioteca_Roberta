@@ -18,7 +18,7 @@ import model.design.Livro;
  *
  * @author Professor
  */
-public class ProdutoDao {
+public class LivroDao { //Renomeei a classe...
     //atributos dao
     private Connection con;
     private PreparedStatement stmt;
@@ -32,7 +32,7 @@ public class ProdutoDao {
             con = Conexao.getConnection();
         
             //código sql a ser executado
-            stmt = con.prepareStatement("INSERT INTO LIVRO (NomeLivro, Acabamento, CodLivro, Preco)VALUES(?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO Livro (NomeLivro, Acabamento, CodLivro, Preco)VALUES(?, ?, ?, ?)");
         
             //atribuicao de valor aos parametros
             stmt.setString(1, l.getNomeLivro());
@@ -50,16 +50,17 @@ public class ProdutoDao {
     } //fim do create
     
     //read
-    public List <Produto> read (){
+    public List <Livro> read (){
     //lista de produtos
-    List <Produto> livros = new ArrayList<>();
+    List <Livro> livros = new ArrayList<>();
     
     try{
         //estabelecendo conexão
         con = Conexao.getConnection();
         
         //codigo sql
-        smt = con.prepareStatement("SELECT NomeLivro, Acabamento, CodLivro, Preco" "FROM PRODUTO");
+        //Corrigi um detalhe bobo aqui...
+        stmt = con.prepareStatement("SELECT NomeLivro, Acabamento, CodLivro, Preco FROM Livro");
         
         //executando a consulta
         rs = stmt.executeQuery();

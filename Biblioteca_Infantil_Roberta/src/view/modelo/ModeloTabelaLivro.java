@@ -22,6 +22,11 @@ public class ModeloTabelaLivro extends AbstractTableModel {
     //vetor de rotulos de campo
     private String[] colunas = {"Nome do livro","Acabamento","Código do livro","Preço"};
 
+    //Você esqueceu este método aqui...
+    public void clearTable(){
+        livro.clear();
+    }
+    
     @Override
     public int getRowCount() {
         return this.livro.size();

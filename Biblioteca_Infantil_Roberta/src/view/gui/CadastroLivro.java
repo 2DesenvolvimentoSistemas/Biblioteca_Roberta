@@ -5,7 +5,7 @@
  */
 package view.gui;
 
-import controler.ProdutoDao;
+import controler.LivroDao;
 import javax.swing.JOptionPane;
 import model.design.Livro;
 import view.modelo.ModeloTabelaLivro;
@@ -20,15 +20,15 @@ public class CadastroLivro extends javax.swing.JFrame {
     ModeloTabelaLivro modelo = new ModeloTabelaLivro();
     
     //criacao do objeto Dao
-    ProdutoDao pDao = new ProdutoDao();
+    LivroDao pDao = new LivroDao();
 
     /**
      * Creates new form CadastroLivro
      */
     public CadastroLivro() {
-        initComponents();
-        
+        initComponents();        
         this.tblCadastroLivro.setModel(modelo);
+        this.lerTabela();
         
     }
 
@@ -230,11 +230,18 @@ public class CadastroLivro extends javax.swing.JFrame {
 
     
     private void lerTabela (){
-        //add livros na tabela
+        //limpar tabela ...não tinha!
+        modelo.clearTable();
+        
+        //add livros na tabela        
         for (Livro l: pDao.read())
             this.modelo.addRow(l);
-            this.lerTabela();
+        
+        
     }
+    
+    
+    
     private void txtAcabamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcabamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcabamentoActionPerformed
