@@ -298,23 +298,13 @@ public class CadastroLivro extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         
-        try{
-            /*
-            //depois esse comando deve ser substituido pelo método read
-        this.modelo.addRow(new Livro( 
-        txtNome.getText(),
-           txtAcabamento.getText(),
-                Integer.parseInt(txtCodigo.getText()),
-                Double.parseDouble(txtPreco.getText()))
-        );*/
-            
+        try{            
         
         //gravando na tabela do BD 
         pDao.create(
         new Livro(
                 txtNome.getText(), 
                 txtAcabamento.getText(),
-                Integer.parseInt(txtCodigo.getText()),
                 Double.parseDouble(txtPreco.getText())
         )
                 
