@@ -80,6 +80,7 @@ public class CadastroLivro extends javax.swing.JFrame {
 
         lblCodigo.setText("Código do livro: ");
 
+        txtCodigo.setEditable(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -149,7 +150,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                         .addComponent(btnexcluir)
                         .addGap(18, 18, 18)
                         .addComponent(btnLimpar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(467, Short.MAX_VALUE))
                     .addGroup(pnlCadastroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(pnlCadastroLivroLayout.createSequentialGroup()
                             .addComponent(lblPreco)
@@ -204,24 +205,18 @@ public class CadastroLivro extends javax.swing.JFrame {
                     .addComponent(btnAtualizar)
                     .addComponent(btnexcluir)
                     .addComponent(btnLimpar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pnlCadastroLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -257,10 +252,25 @@ public class CadastroLivro extends javax.swing.JFrame {
         int linha = tblCadastroLivro.getSelectedRow();
         
         if (linha != -1){
+            
+            try{
+                pDao.update(new Livro(
+                                      txtNome.getText(),
+                                      txtAcabamento.getText(),
+                                      Integer.parseInt(txtCodigo.getText()),
+                                      Double.parseDouble(txtPreco.getText())
+                )
+                    );
+                this.lerTabela();
+            }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Erro!" + e.getMessage());
+            }
+            /*obsoleto
             modelo.setValueAt(txtNome.getText(), linha, 0);
             modelo.setValueAt(txtAcabamento.getText(), linha, 1);
             modelo.setValueAt(txtCodigo.getText(), linha, 2);
             modelo.setValueAt(txtPreco.getText(), linha, 3);
+            */
         }
         
         //limpando o form
@@ -309,6 +319,10 @@ public class CadastroLivro extends javax.swing.JFrame {
         )
                 
         );
+        
+                //atualizando a tabela da interface
+                this.lerTabela();
+        
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog( 
                     null, 
@@ -322,8 +336,6 @@ public class CadastroLivro extends javax.swing.JFrame {
         //limpando a tela
         this.btnLimparActionPerformed(evt);
         
-        //atualizando a tabela da interface
-        this.lerTabela();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
