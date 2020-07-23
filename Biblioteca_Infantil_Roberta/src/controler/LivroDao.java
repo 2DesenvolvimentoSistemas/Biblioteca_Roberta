@@ -114,4 +114,28 @@ public class LivroDao { //Renomeei a classe...
     }
     
     }
+    
+    //delete crud, amém
+    
+    public void delete (Livro l){
+        try{
+            //estabelecendo conexão com o bd
+            con = Conexao.getConnection();
+            
+            //código sql delete
+            stmt = con.prepareStatement("DELETE FROM Livro WHERE CodLivro = ?");
+            
+            //configurando o parametro
+            
+            stmt.setInt(1, l.getCodLivro());
+            
+            //executando o código sql
+            
+            stmt.execute();
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+        }finally {
+            Conexao.closeConnection(con, stmt);
+        }
+    }
 }
