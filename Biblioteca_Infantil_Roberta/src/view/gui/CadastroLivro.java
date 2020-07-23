@@ -278,7 +278,25 @@ public class CadastroLivro extends javax.swing.JFrame {
         int linha = tblCadastroLivro.getSelectedRow();
         
         if (linha != -1){
-        this.modelo.removeRow(linha);
+            
+            try{
+            pDao.delete(
+                    new Livro(
+                            txtNome.getText(),
+                            txtAcabamento.getText(),
+                            Integer.parseInt(txtCodigo.getText()),
+                            Double.parseDouble(txtPreco.getText())
+            
+            )
+            
+            );
+            
+            //atualializando a tabela
+            this.lerTabela();
+            
+        }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+                }
         }
         
         //limpando o form
