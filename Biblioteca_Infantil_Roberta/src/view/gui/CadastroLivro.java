@@ -356,10 +356,10 @@ public class CadastroLivro extends javax.swing.JFrame {
         int linha = tblCadastroLivro.getSelectedRow();
         
         if (linha != -1){
-            txtNome.setText(modelo.getValueAt(linha, 1).toString());
-            txtAcabamento.setText(modelo.getValueAt(linha, 2).toString());
-            txtCodigo.setText(modelo.getValueAt(linha, 3).toString());
-            txtPreco.setText(modelo.getValueAt(linha, 4).toString());
+            txtNome.setText(modelo.getValueAt(linha, 0).toString());
+            txtAcabamento.setText(modelo.getValueAt(linha, 1).toString());
+            txtCodigo.setText(modelo.getValueAt(linha, 2).toString());
+            txtPreco.setText(modelo.getValueAt(linha, 3).toString());
         }
     }//GEN-LAST:event_tblCadastroLivroMouseClicked
 
