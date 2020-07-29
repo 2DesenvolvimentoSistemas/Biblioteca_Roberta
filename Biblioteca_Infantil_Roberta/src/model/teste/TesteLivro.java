@@ -21,6 +21,7 @@ public class TesteLivro {
         livro.setNomeLivro("O Pequeno Príncipe");
         livro.setAcabamento("Brochura");
         livro.setCodLivro(123);
+        livro.setSetor('D'); // Desenvolvimento de Coleções responsável pelo acervo da biblioteca, pelo desenvolvimento da coleção de documentos
         livro.setPreco(21.90);
         
         //imprimindo produto
@@ -28,7 +29,7 @@ public class TesteLivro {
         livro.imprimirLivro();
         
         //outro objeto
-        Livro outroLivro = new Livro("O Jardim Secreto","Brochura",1234,30.10);
+        Livro outroLivro = new Livro("O Jardim Secreto","Brochura",1234, 'A', 30.10); //administraao
         
         //imprimindo outro produto
         System.out.println("\n\t\t\t -- LIVRO DOIS -- \n");
@@ -42,6 +43,7 @@ public class TesteLivro {
         editora.setAcabamento("Brochura");
         editora.setCodLivro(12345);
         editora.setPreco(39.92);
+        editora.setSetor('A'); //(que adquirirá os documentos selecionados pelo setor de seleção – seja por compra, permuta ou doação).
         editora.setIsbn(978877845);
         
         //imprimindo o objeto Editora
