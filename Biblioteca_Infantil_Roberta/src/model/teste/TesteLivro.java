@@ -7,6 +7,7 @@ package model.teste;
 
 import model.design.Editora;
 import model.design.Livro;
+import model.design.Setor;
 
 /**
  *
@@ -21,7 +22,7 @@ public class TesteLivro {
         livro.setNomeLivro("O Pequeno Príncipe");
         livro.setAcabamento("Brochura");
         livro.setCodLivro(123);
-        livro.setSetor('D'); // Desenvolvimento de Coleções responsável pelo acervo da biblioteca, pelo desenvolvimento da coleção de documentos
+        livro.setSetor(Setor.INFANTO_JUVENIL); 
         livro.setPreco(21.90);
         
         //imprimindo produto
@@ -29,7 +30,7 @@ public class TesteLivro {
         livro.imprimirLivro();
         
         //outro objeto
-        Livro outroLivro = new Livro("O Jardim Secreto","Brochura",1234, 'A', 30.10); //administraao
+        Livro outroLivro = new Livro("O Jardim Secreto","Brochura",1234, Setor.FICCAO, 30.10);
         
         //imprimindo outro produto
         System.out.println("\n\t\t\t -- LIVRO DOIS -- \n");
@@ -43,7 +44,7 @@ public class TesteLivro {
         editora.setAcabamento("Brochura");
         editora.setCodLivro(12345);
         editora.setPreco(39.92);
-        editora.setSetor('A'); //(que adquirirá os documentos selecionados pelo setor de seleção – seja por compra, permuta ou doação).
+        editora.setSetor(Setor.DESENVOLVIMENTO_DE_COLECOES); // Desenvolvimento de Coleções - responsável pelo acervo da biblioteca, pelo desenvolvimento da coleção de documentos
         editora.setIsbn(978877845);
         
         //imprimindo o objeto Editora
