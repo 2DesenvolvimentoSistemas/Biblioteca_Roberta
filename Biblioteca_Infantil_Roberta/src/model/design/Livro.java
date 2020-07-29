@@ -17,13 +17,22 @@ public class Livro {
         this.preco = preco;
     }
 
-    public Livro(String nomeLivro, String acabamento, int codLivro, char setor, double preco) {
+    public Livro(String nomeLivro, String acabamento, int codLivro, double preco) {
+        this.nomeLivro = nomeLivro;
+        this.acabamento = acabamento;
+        this.codLivro = codLivro;
+        this.preco = preco;
+    }
+
+    public Livro(String nomeLivro, String acabamento, int codLivro, Setor setor, double preco) {
         this.nomeLivro = nomeLivro;
         this.acabamento = acabamento;
         this.codLivro = codLivro;
         this.setor = setor;
         this.preco = preco;
     }
+    
+    
     
     public Livro() {
         this.setNomeLivro("Livro não informado.");
@@ -35,7 +44,7 @@ public class Livro {
     private String nomeLivro;
     private String acabamento; //brochura, aspiral ou coisa que o valha
     private int codLivro;
-    private char setor;
+    private Setor setor;
     private double preco;
 
     public void setPreco(double preco) {
@@ -48,6 +57,7 @@ public class Livro {
         System.out.println("Nome do livro.................... " +this.getNomeLivro());
         System.out.println("Acabamento.................... " +this.getAcabamento());
         System.out.println("Cód do livro.................... "+this.getCodLivro());
+        System.out.println("Setor...................." + this.getSetor().getSetor());
         System.out.printf("Preço.................... R$ %.2f\n" ,this.getPreco());
     }
 
@@ -71,11 +81,11 @@ public class Livro {
         this.acabamento = acabamento;
     }
     
-        public void setSetor(char setor) {
+        public void setSetor(Setor setor) {
         this.setor = setor;
     }
 
-    public char getSetor() {
+    public Setor getSetor() {
         return setor;
     }
 
