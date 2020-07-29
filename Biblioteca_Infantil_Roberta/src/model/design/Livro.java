@@ -17,10 +17,11 @@ public class Livro {
         this.preco = preco;
     }
 
-    public Livro(String nomeLivro, String acabamento, int codLivro, double preco) {
+    public Livro(String nomeLivro, String acabamento, int codLivro, char setor, double preco) {
         this.nomeLivro = nomeLivro;
         this.acabamento = acabamento;
         this.codLivro = codLivro;
+        this.setor = setor;
         this.preco = preco;
     }
     
@@ -34,7 +35,13 @@ public class Livro {
     private String nomeLivro;
     private String acabamento; //brochura, aspiral ou coisa que o valha
     private int codLivro;
+    private char setor;
     private double preco;
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
     
     //metodo
     public void imprimirLivro (){
@@ -63,10 +70,15 @@ public class Livro {
     public void setAcabamento(String acabamento) {
         this.acabamento = acabamento;
     }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
+    
+        public void setSetor(char setor) {
+        this.setor = setor;
     }
+
+    public char getSetor() {
+        return setor;
+    }
+
 
     public int getCodLivro() {
         return codLivro;
