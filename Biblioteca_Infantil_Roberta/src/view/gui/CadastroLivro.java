@@ -6,6 +6,8 @@
 package view.gui;
 
 import controler.LivroDao;
+import java.util.concurrent.ExecutionException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.design.Livro;
 import model.design.Setor;
@@ -31,10 +33,16 @@ public class CadastroLivro extends javax.swing.JFrame {
         this.tblCadastroLivro.setModel(modelo);
         this.lerTabela();
         cmbSetor.addItem(Setor.INFANTO_JUVENIL);
-        cmbSetor.addItem(Setor.FICCAO);
-        cmbSetor.addItem(Setor.DESENVOLVIMENTO_DE_COLECOES);
-        
+        cmbSetor.addItem(Setor.FICÇÃO);
+        cmbSetor.addItem(Setor.FÁBULA);
+        cmbSetor.addItem(Setor.CONTO);
+        cmbSetor.addItem(Setor.APÓLOGO);
+        cmbSetor.addItem(Setor.CRÔNICA);
+        cmbSetor.addItem(Setor.LENDA);
+        cmbSetor.addItem(Setor.MITO);   
+        cmbSetor.addItem(Setor.FANTASIA); 
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +53,7 @@ public class CadastroLivro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         pnlCadastroLivro = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -64,9 +73,11 @@ public class CadastroLivro extends javax.swing.JFrame {
         cmbSetor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de livros");
+        setTitle("Seja bem vindo ao Sistema - Cadastro de Livros Infantis  ");
 
-        pnlCadastroLivro.setBackground(new java.awt.Color(255, 204, 255));
+        pnlCadastroLivro.setBackground(new java.awt.Color(204, 204, 255));
+        pnlCadastroLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnlCadastroLivro.setToolTipText("");
 
         lblNome.setText("Nome do livro: ");
 
@@ -141,7 +152,13 @@ public class CadastroLivro extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblCadastroLivro);
 
-        lblSetor.setText("Setor:");
+        lblSetor.setText("Gêneros:");
+
+        cmbSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSetorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCadastroLivroLayout = new javax.swing.GroupLayout(pnlCadastroLivro);
         pnlCadastroLivro.setLayout(pnlCadastroLivroLayout);
@@ -176,7 +193,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(48, 48, 48)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(103, Short.MAX_VALUE))
+                        .addContainerGap(99, Short.MAX_VALUE))
                     .addGroup(pnlCadastroLivroLayout.createSequentialGroup()
                         .addGroup(pnlCadastroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCadastroLivroLayout.createSequentialGroup()
@@ -207,7 +224,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                         .addGroup(pnlCadastroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAcabamento)
                             .addComponent(txtAcabamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(pnlCadastroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -224,7 +241,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                     .addComponent(btnAtualizar)
                     .addComponent(btnexcluir)
                     .addComponent(btnLimpar))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -382,6 +399,10 @@ public class CadastroLivro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblCadastroLivroMouseClicked
 
+    private void cmbSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSetorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSetorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -415,6 +436,8 @@ public class CadastroLivro extends javax.swing.JFrame {
             public void run() {
                 new CadastroLivro().setVisible(true);
             }
+            
+            
         });
     }
 
@@ -424,6 +447,7 @@ public class CadastroLivro extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnexcluir;
     private javax.swing.JComboBox<Setor> cmbSetor;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAcabamento;
     private javax.swing.JLabel lblCodigo;
