@@ -22,7 +22,7 @@ public class TesteLivro {
         livro.setNomeLivro("O Pequeno Príncipe");
         livro.setAcabamento("Brochura");
         livro.setCodLivro(123);
-        livro.setSetor(Setor.INFANTO_JUVENIL); 
+        livro.setSetor(Setor.INFANTIL); 
         livro.setPreco(21.90);
         
         //imprimindo produto
@@ -30,7 +30,7 @@ public class TesteLivro {
         livro.imprimirLivro();
         
         //outro objeto
-        Livro outroLivro = new Livro("O Jardim Secreto","Brochura",1234, Setor.FICCAO, 30.10);
+        Livro outroLivro = new Livro("O Jardim Secreto","Brochura",1234, Setor.FICÇÃO, 30.10);
         
         //imprimindo outro produto
         System.out.println("\n\t\t\t -- LIVRO DOIS -- \n");
@@ -44,7 +44,7 @@ public class TesteLivro {
         editora.setAcabamento("Brochura");
         editora.setCodLivro(12345);
         editora.setPreco(39.92);
-        editora.setSetor(Setor.DESENVOLVIMENTO_DE_COLECOES); // Desenvolvimento de Coleções - responsável pelo acervo da biblioteca, pelo desenvolvimento da coleção de documentos
+        editora.setSetor(Setor.APÓLOGO); 
         editora.setIsbn(978877845);
         
         //imprimindo o objeto Editora

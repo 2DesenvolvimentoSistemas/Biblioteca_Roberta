@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.design.Livro;
+import model.design.Setor;
 
 /**
  *
@@ -60,7 +61,7 @@ public class LivroDao { //Renomeei a classe...
         
         //codigo sql
         //Corrigi um detalhe bobo aqui...
-        stmt = con.prepareStatement("SELECT NomeLivro, Acabamento, CodLivro, Preco FROM Livro");
+        stmt = con.prepareStatement("SELECT NomeLivro, Acabamento, CodLivro, Preco, Setor FROM Livro");
         
         //executando a consulta
         rs = stmt.executeQuery();
@@ -71,6 +72,7 @@ public class LivroDao { //Renomeei a classe...
                         rs.getString("NomeLivro"),
                         rs.getString("Acabamento"),
                         rs.getInt("CodLivro"),
+                        Setor.valueOf(rs.getString("Setor")),                       
                         rs.getDouble("Preco")
                 )
             );
@@ -93,16 +95,18 @@ public class LivroDao { //Renomeei a classe...
         
         //cod sql para update
         stmt = con.prepareStatement("UPDATE livro " +
+                                    "NomeLivro = ?, " + 
                                     "SET Acabamento = ?, " +
-                                    "NomeLivro = ?, " +
-                                    "Preco = ? " +
+                                    "Setor = ?, " +
+                                    "Preco = ?, " +
                                     "WHERE CodLivro = ?");
         
         //definicao dos parametros
-        stmt.setString(1, l.getAcabamento());
-        stmt.setString(2, l.getNomeLivro());
-        stmt.setDouble(3, l.getPreco());
-        stmt.setInt(4, l.getCodLivro());
+        stmt.setString(1, l.getNomeLivro());
+        stmt.setString(2, l.getAcabamento());
+        stmt.setString(3, l.getSetor().toString());
+        stmt.setDouble(4, l.getPreco());
+        stmt.setInt(5, l.getCodLivro());
         
         //atualizando os dados na tabela
         stmt.executeUpdate();

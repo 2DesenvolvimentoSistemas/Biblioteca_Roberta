@@ -12,9 +12,17 @@ package model.design;
 public enum Setor {
     
     //lista enumerada
-    INFANTO_JUVENIL (1, "IJ", "Infanto Juvenil"),
-    FICCAO (2, "FCC", "Ficção"),
-    DESENVOLVIMENTO_DE_COLECOES (3, "DC", "Desenvolvimento de Coleções");
+    INFANTIL (1, "INFT", "Infantil"),
+    FICÇÃO (2, "FCC", "Ficção"),
+    FÁBULA (3, "FBL", "Fabula"),
+    CONTO (4, "CNT", "Conto"),
+    APÓLOGO (5, "APLG", "Apólogo"),
+    CRÔNICA (6, "CNC", "Crônica"),
+    LENDA (7, "LD", "Lenda"),
+    MITO (8, "MT", "Mito"),
+    NOVELA (9, "NVLA", "Novela"),
+    FANTASIA (10, "FNTS", "Fantasia");
+
     
     //atributos da lista
     private int codSetor;

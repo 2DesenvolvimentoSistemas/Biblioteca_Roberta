@@ -32,7 +32,7 @@ public class CadastroLivro extends javax.swing.JFrame {
         initComponents();        
         this.tblCadastroLivro.setModel(modelo);
         this.lerTabela();
-        cmbSetor.addItem(Setor.INFANTO_JUVENIL);
+        cmbSetor.addItem(Setor.INFANTIL);
         cmbSetor.addItem(Setor.FICÇÃO);
         cmbSetor.addItem(Setor.FÁBULA);
         cmbSetor.addItem(Setor.CONTO);
@@ -294,6 +294,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                                       txtNome.getText(),
                                       txtAcabamento.getText(),
                                       Integer.parseInt(txtCodigo.getText()),
+                                      (Setor)cmbSetor.getSelectedItem(),
                                       Double.parseDouble(txtPreco.getText())
                 )
                     );
@@ -393,9 +394,10 @@ public class CadastroLivro extends javax.swing.JFrame {
         
         if (linha != -1){
             txtNome.setText(modelo.getValueAt(linha, 0).toString());
-            txtAcabamento.setText(modelo.getValueAt(linha, 1).toString());
-            txtCodigo.setText(modelo.getValueAt(linha, 2).toString());
-            txtPreco.setText(modelo.getValueAt(linha, 3).toString());
+            cmbSetor.setSelectedItem(modelo.getValueAt(linha, 1));
+            txtAcabamento.setText(modelo.getValueAt(linha, 2).toString());
+            txtCodigo.setText(modelo.getValueAt(linha, 3).toString());
+            txtPreco.setText(modelo.getValueAt(linha, 4).toString());
         }
     }//GEN-LAST:event_tblCadastroLivroMouseClicked
 

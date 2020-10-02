@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import model.design.Livro;
+import model.design.Setor;
 
 /**
  *
@@ -20,7 +21,7 @@ public class ModeloTabelaLivro extends AbstractTableModel {
     private List<Livro> livro = new ArrayList<>();
     
     //vetor de rotulos de campo
-    private String[] colunas = {"Nome do livro","Acabamento","Código do livro","Preço"};
+    private String[] colunas = {"Nome do livro","Gênero","Acabamento","Código do livro","Preço"};
     
     //remendo para evitar dados repetidos na tabela da interface
     //Você esqueceu este método aqui...
@@ -44,10 +45,12 @@ public class ModeloTabelaLivro extends AbstractTableModel {
             case 0:
                 return this.livro.get(rowIndex).getNomeLivro();
             case 1:
-                return this.livro.get(rowIndex).getAcabamento();
+                return this.livro.get(rowIndex).getSetor();
             case 2:
-                return this.livro.get(rowIndex).getCodLivro();
+                return this.livro.get(rowIndex).getAcabamento();
             case 3:
+                return this.livro.get(rowIndex).getCodLivro();
+            case 4:
                 return this.livro.get(rowIndex).getPreco();
         }
         
@@ -66,11 +69,14 @@ public class ModeloTabelaLivro extends AbstractTableModel {
                 this.livro.get(rowIndex).setNomeLivro(o.toString());
                 break;
             case 1:
-                this.livro.get(rowIndex).setAcabamento(o.toString());
+                this.livro.get(rowIndex).setSetor((Setor)o);
+                break;
             case 2:
+                this.livro.get(rowIndex).setAcabamento(o.toString());
+            case 3:
                 this.livro.get(rowIndex).setCodLivro(Integer.parseInt((String)o));
                 break;
-            case 3:
+            case 4:
                 this.livro.get(rowIndex).setPreco(Double.parseDouble((String)o));
                 break;
         }
