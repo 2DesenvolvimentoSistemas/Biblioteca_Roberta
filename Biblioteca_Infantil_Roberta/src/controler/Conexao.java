@@ -21,7 +21,7 @@ public class Conexao {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/BibliotecaInfantil?zeroDateTimeBehavior=convertToNull";
     private static String USR = "Roberta";
-    private static String PSW = "12345"; //"Um2três4cinco!"; //no linux no windows
+    private static String PSW = "Um2três4cinco!"; //"12345"; // //no linux no windows
     
     //metodos de conexao
     public static Connection getConnection (){

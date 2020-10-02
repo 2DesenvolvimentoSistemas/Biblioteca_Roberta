@@ -33,12 +33,12 @@ public class LivroDao { //Renomeei a classe...
             con = Conexao.getConnection();
         
             //código sql a ser executado
-            stmt = con.prepareStatement("INSERT INTO Livro (NomeLivro, Acabamento, CodLivro, Preco)VALUES(?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO Livro (NomeLivro, Acabamento, Setor, Preco)VALUES(?, ?, ?, ?)");
         
             //atribuicao de valor aos parametros
             stmt.setString(1, l.getNomeLivro());
             stmt.setString(2, l.getAcabamento());
-            stmt.setInt(3, l.getCodLivro());
+            stmt.setString(3, l.getSetor().toString());
             stmt.setDouble(4, l.getPreco());
         
             //execusao do codigo
@@ -94,11 +94,11 @@ public class LivroDao { //Renomeei a classe...
         con = Conexao.getConnection();
         
         //cod sql para update
-        stmt = con.prepareStatement("UPDATE livro " +
-                                    "NomeLivro = ?, " + 
-                                    "SET Acabamento = ?, " +
+        stmt = con.prepareStatement("UPDATE Livro " +    //SET no lugar errado e uma virgula a mais foram corrigidos
+                                    "SET NomeLivro = ?, " + 
+                                    "Acabamento = ?, " +
                                     "Setor = ?, " +
-                                    "Preco = ?, " +
+                                    "Preco = ? " +
                                     "WHERE CodLivro = ?");
         
         //definicao dos parametros

@@ -6,8 +6,6 @@
 package view.gui;
 
 import controler.LivroDao;
-import java.util.concurrent.ExecutionException;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.design.Livro;
 import model.design.Setor;
@@ -322,6 +320,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                             txtNome.getText(),
                             txtAcabamento.getText(),
                             Integer.parseInt(txtCodigo.getText()),
+                            (Setor) cmbSetor.getSelectedItem(), //também tive que atualizar aqui...
                             Double.parseDouble(txtPreco.getText())
             
             )
@@ -351,11 +350,12 @@ public class CadastroLivro extends javax.swing.JFrame {
         
         //gravando na tabela do BD 
         pDao.create(
-        new Livro(
-                txtNome.getText(), 
-                txtAcabamento.getText(),
-                Double.parseDouble(txtPreco.getText())
-        )
+                new Livro(
+                    txtNome.getText(), 
+                    txtAcabamento.getText(),
+                    (Setor)cmbSetor.getSelectedItem(), //pequena correção para que o setor seja inserido
+                    Double.parseDouble(txtPreco.getText())
+                )
                 
         );
         

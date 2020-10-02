@@ -17,10 +17,10 @@ public class Livro {
         this.preco = preco;
     }
 
-    public Livro(String nomeLivro, String acabamento, int codLivro, double preco) {
+    public Livro(String nomeLivro, String acabamento, Setor setor, double preco) {
         this.nomeLivro = nomeLivro;
         this.acabamento = acabamento;
-        this.codLivro = codLivro;
+        this.setor = setor; //Tive que trocar o código pelo setor aqui!
         this.preco = preco;
     }
 
