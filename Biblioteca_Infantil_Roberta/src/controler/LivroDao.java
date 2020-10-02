@@ -38,7 +38,7 @@ public class LivroDao { //Renomeei a classe...
             //atribuicao de valor aos parametros
             stmt.setString(1, l.getNomeLivro());
             stmt.setString(2, l.getAcabamento());
-            stmt.setString(3, l.getSetor().toString());
+            stmt.setString(3, l.getSetor().toString()); //Add o setor na lista de campos do insert
             stmt.setDouble(4, l.getPreco());
         
             //execusao do codigo
